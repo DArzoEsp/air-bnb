@@ -1,17 +1,28 @@
-import photo from '../images/katie-zaferes.png'
+/* eslint-disable react/prop-types */
 import star from '../images/star.png'
 
-export default function Card() {
+export default function Card(props) {
+    let badgeText;
+    if(props.openSpots === 0) {
+        badgeText = "SOLD OUT"
+    } else if(props.location === "Online") {
+        badgeText= "ONLINE"
+    }
+
     return (
         <div className="card-container">
-            <img className="card" src={photo} alt="pic of user img" ></img>
-            <h2 className='info'>
+            {badgeText && <div className='card--badge'>{badgeText}</div>}
+            <img className="card-img" src={`../images/${props.coverImg}`} alt="pic of user img" ></img>
+            <h2 className='card-info'>
                 <div className='rating'>
                     <img className="star-info" src={star} alt="star icon" />
-                    5.0 <span className='num'> (6) &#x2022; USA</span>
+                        {props.stats.rating}
+                        <span className='num'>
+                            ({props.stats.reviewCount}) &#x2022; {props.location}
+                        </span>
                     </div>
-                Life Lessons with Katie Zaferes
-                <p><strong>From $136</strong> / person</p>
+                <p className='card--title'>{props.title}</p>
+                <p className='card--price'><strong>From ${props.price}</strong> / person</p>
             </h2>
         </div>
     )

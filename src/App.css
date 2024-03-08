@@ -28,7 +28,7 @@ body {
 
 .photo-grid {
   align-self: center;
-  width: 850px;
+  width: 1000px;
   padding: 30px;
 }
 
@@ -42,19 +42,27 @@ body {
   font-size: 24px;
 }
 
-.card-container {
+.data-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  padding: 0 50px;
+  flex-direction: row;
 }
 
-.card {
+.card-container {
+  position: relative;
+  flex: 0 0 auto;         /* ADD */
+  display: flex;          /* ADD */
+  flex-direction: column; /* ADD */
+  padding: 0 0 0 50px;
+  overflow-x: auto;
+}
+
+.card-img {
   border-radius: 10px;
   max-width: 220px;
 }
 
-.info {
+.card-info {
   display: flex;
   flex-direction: column;
   max-width: 220px;
@@ -68,6 +76,16 @@ body {
   margin-right: 5px;
 }
 
+.card--badge {
+  position: absolute;
+  top: 6px;
+  left: 56px;
+  background-color: white;
+  padding: 5px 7px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
 .rating {
   display: flex;
   align-items: start;
@@ -76,4 +94,13 @@ body {
 .num {
   color: gray;
   margin-left: 4px;
+}
+
+.card--title {
+  font-weight: 300;
+  margin: 0;
+}
+
+.card--price {
+  margin: 10px 0 0;
 }
